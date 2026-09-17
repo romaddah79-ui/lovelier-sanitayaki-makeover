@@ -8,7 +8,7 @@ export type Product = {
   category: string;
   description: string;
   image: string;
-  imagePosition?: string;
+  imageClass?: string;
   price?: number;
   previousPrice?: number;
   badge?: string;
@@ -33,7 +33,7 @@ export const products: Product[] = [
     category: "Plasturi termici",
     description: "Pachet de plasturi cu efect de încălzire pentru utilizare conform instrucțiunilor produsului.",
     image: collectionImage,
-    imagePosition: "78% center",
+    imageClass: "object-[78%_center]",
     price: 200,
     previousPrice: 250,
     badge: "-20%",
@@ -45,7 +45,7 @@ export const products: Product[] = [
     category: "Perne ortopedice",
     description: "Formă ergonomică și suprafață textilă moale pentru odihnă.",
     image: collectionImage,
-    imagePosition: "18% center",
+    imageClass: "object-[18%_center]",
     available: true,
   },
   {
@@ -54,7 +54,7 @@ export const products: Product[] = [
     category: "Monitorizare",
     description: "Dispozitiv digital compact pentru măsurători la domiciliu.",
     image: collectionImage,
-    imagePosition: "34% center",
+    imageClass: "object-[34%_center]",
     available: true,
   },
   {
@@ -63,7 +63,7 @@ export const products: Product[] = [
     category: "Nebulizatoare",
     description: "Format compact și accesorii pentru utilizare conform manualului.",
     image: collectionImage,
-    imagePosition: "55% center",
+    imageClass: "object-[55%_center]",
     available: true,
   },
   {
@@ -72,7 +72,7 @@ export const products: Product[] = [
     category: "Monitorizare",
     description: "Ecran lizibil și format ușor de păstrat la îndemână.",
     image: collectionImage,
-    imagePosition: "48% center",
+    imageClass: "object-[48%_center]",
     available: true,
   },
   {
@@ -81,7 +81,7 @@ export const products: Product[] = [
     category: "Wellness",
     description: "Balsam în recipient compact, pentru utilizare conform etichetei.",
     image: collectionImage,
-    imagePosition: "92% center",
+    imageClass: "object-[92%_center]",
     available: true,
   },
   {
@@ -90,7 +90,7 @@ export const products: Product[] = [
     category: "Filtre țigări",
     description: "Filtre din gama Suzen, în ambalaj original.",
     image: collectionImage,
-    imagePosition: "70% center",
+    imageClass: "object-[70%_center]",
     available: true,
   },
   {
@@ -99,7 +99,7 @@ export const products: Product[] = [
     category: "Filtre țigări",
     description: "Filtre reutilizabile din gama Targuard.",
     image: collectionImage,
-    imagePosition: "70% center",
+    imageClass: "object-[70%_center]",
     available: true,
   },
 ];

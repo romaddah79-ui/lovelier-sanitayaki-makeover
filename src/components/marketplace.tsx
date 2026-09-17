@@ -102,7 +102,7 @@ export function ProductCard({ product, compact = false }: { product: Product; co
     <article className={cn("group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-xs transition-shadow hover:shadow-md", compact && "min-w-0")}>
       <div className="relative aspect-square overflow-hidden bg-muted">
         <Link to="/produs/$slug" params={{ slug: product.slug }} aria-label={product.name}>
-          <img src={product.image} alt={product.name} loading="lazy" width={1600} height={1008} className="size-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" style={{ objectPosition: product.imagePosition ?? "center" }} />
+          <img src={product.image} alt={product.name} loading="lazy" width={1600} height={1008} className={cn("size-full object-cover transition-transform duration-300 group-hover:scale-[1.03]", product.imageClass)} />
         </Link>
         {product.badge ? <span className="absolute left-2 top-2 rounded bg-primary px-2 py-1 text-[10px] font-extrabold text-primary-foreground">{product.badge}</span> : null}
         <Button type="button" variant="secondary" size="icon" onClick={() => setFavorite((value) => !value)} aria-label={favorite ? "Elimină din favorite" : "Adaugă la favorite"} className={cn("absolute right-2 top-2 size-8 rounded-full bg-card/90", favorite && "text-primary")}><Heart fill={favorite ? "currentColor" : "none"} /></Button>
