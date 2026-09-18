@@ -68,10 +68,10 @@ export function MarketplaceHeader() {
 
 function HeaderAction({ icon, label, badge }: { icon: ReactNode; label: string; badge?: string }) {
   return (
-    <button type="button" className="relative flex min-h-10 min-w-10 flex-col items-center justify-center rounded-md px-2 text-[10px] font-semibold text-foreground/75 hover:bg-muted hover:text-primary sm:text-xs" aria-label={label} title={label}>
+    <Button type="button" variant="ghost" className="relative flex h-auto min-h-10 min-w-10 flex-col items-center justify-center gap-0 rounded-md px-2 text-[10px] font-semibold text-foreground/75 hover:text-primary sm:text-xs" aria-label={label} title={label}>
       <span className="[&_svg]:size-5">{icon}</span><span className="hidden sm:inline">{label}</span>
       {badge ? <span className="absolute right-0 top-0 grid size-4 place-items-center rounded-full bg-primary text-[9px] text-primary-foreground">{badge}</span> : null}
-    </button>
+    </Button>
   );
 }
 
@@ -80,8 +80,8 @@ function MobileBottomNav() {
     <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-4 border-t border-border bg-background/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden" aria-label="Navigare mobilă">
       <Link to="/" className="mobile-nav-item"><Home />Acasă</Link>
       <Link to="/magazin" className="mobile-nav-item"><ShoppingBag />Magazin</Link>
-      <button type="button" className="mobile-nav-item"><Heart />Favorite</button>
-      <button type="button" className="mobile-nav-item"><ShoppingCart />Coș</button>
+      <Button type="button" variant="ghost" className="mobile-nav-item h-auto rounded-none"><Heart />Favorite</Button>
+      <Button type="button" variant="ghost" className="mobile-nav-item h-auto rounded-none"><ShoppingCart />Coș</Button>
     </nav>
   );
 }
