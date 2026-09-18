@@ -39,8 +39,6 @@ function HomePage() {
         </div>
       </section>
 
-      <div id="promovate"><ProductRail label="Produse promovate" products={products.slice(0, 6)} /></div>
-
       <section className="market-section">
         <div className="grid overflow-hidden rounded-lg border border-border bg-card/80 shadow-xs backdrop-blur-xl lg:grid-cols-2">
           <div className="flex flex-col justify-center p-6 sm:p-10">
@@ -55,7 +53,9 @@ function HomePage() {
         </div>
       </section>
 
-      <ProductRail label="Cele mai căutate" products={products.slice(2)} />
+      <div id="promovate"><ProductRail label="Produse promovate" products={products.slice(0, 6)} /></div>
+
+      <ProductRail label="Cele mai vândute" products={products.slice(2)} />
 
       <section className="market-section">
         <div className="relative overflow-hidden rounded-lg bg-foreground p-7 text-background sm:p-10">
