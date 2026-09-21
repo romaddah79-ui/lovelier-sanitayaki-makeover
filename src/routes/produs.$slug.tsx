@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ProductRail } from "@/components/marketplace";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { assets, products } from "@/lib/catalog";
+import { useStore } from "@/lib/store";
 
 export const Route = createFileRoute("/produs/$slug")({
   head: ({ params }) => ({ meta: [
@@ -20,10 +21,12 @@ export const Route = createFileRoute("/produs/$slug")({
 
 function ProductPage() {
   const { slug } = Route.useParams();
+  const store = useStore();
   const product = products.find((item) => item.slug === slug) ?? products[0];
+  const favorite = store.isWishlisted(product.slug);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
-  const gallery = [product.image, assets.productCollection, assets.heroImage];
+  const gallery = [product.image, assets.collectionImage, assets.heroImage];
   return <>
     <div className="mx-auto max-w-[1440px] px-4 pb-4 pt-5 lg:px-6">
       <nav className="scrollbar-none flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-muted-foreground" aria-label="Breadcrumb"><Link to="/">Acasă</Link><ChevronRight className="size-3" /><Link to="/magazin">Magazin</Link><ChevronRight className="size-3" /><span className="truncate text-foreground">{product.name}</span></nav>
