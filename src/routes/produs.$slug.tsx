@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ProductRail } from "@/components/marketplace";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { assets, products } from "@/lib/catalog";
+import { useStore } from "@/lib/store";
 
 export const Route = createFileRoute("/produs/$slug")({
   head: ({ params }) => ({ meta: [
@@ -20,10 +21,12 @@ export const Route = createFileRoute("/produs/$slug")({
 
 function ProductPage() {
   const { slug } = Route.useParams();
+  const store = useStore();
   const product = products.find((item) => item.slug === slug) ?? products[0];
+  const favorite = store.isWishlisted(product.slug);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
-  const gallery = [product.image, assets.productCollection, assets.heroImage];
+  const gallery = [product.image, assets.collectionImage, assets.heroImage];
   return <>
     <div className="mx-auto max-w-[1440px] px-4 pb-4 pt-5 lg:px-6">
       <nav className="scrollbar-none flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-muted-foreground" aria-label="Breadcrumb"><Link to="/">Acasă</Link><ChevronRight className="size-3" /><Link to="/magazin">Magazin</Link><ChevronRight className="size-3" /><span className="truncate text-foreground">{product.name}</span></nav>
@@ -35,8 +38,8 @@ function ProductPage() {
         <div className="self-start rounded-lg border border-border bg-card/80 p-5 shadow-xs backdrop-blur-xl sm:p-7">
           <p className="text-xs font-extrabold uppercase text-primary">{product.category}</p><h1 className="mt-2 font-display text-2xl font-extrabold leading-tight sm:text-3xl">{product.name}</h1><p className="mt-4 leading-7 text-muted-foreground">{product.description}</p>
           <div className="mt-6 border-y border-border py-5">{typeof product.price === "number" ? <div className="flex items-baseline gap-3"><span className="font-display text-3xl font-extrabold">{product.price.toFixed(2).replace(".", ",")} lei</span>{product.previousPrice ? <span className="text-sm text-muted-foreground line-through">{product.previousPrice.toFixed(2).replace(".", ",")} lei</span> : null}{product.badge ? <span className="rounded bg-primary px-2 py-1 text-xs font-bold text-primary-foreground">{product.badge}</span> : null}</div> : <p className="font-bold text-muted-foreground">Prețul va fi preluat din magazin</p>}<p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted-foreground"><Check className="size-4 text-primary" /> Disponibilitatea se confirmă la comandă</p></div>
-          <div className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] gap-3"><div className="flex items-center rounded-md border border-border bg-background"><Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Scade cantitatea"><Minus /></Button><span className="w-8 text-center text-sm font-bold">{quantity}</span><Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((value) => value + 1)} aria-label="Crește cantitatea"><Plus /></Button></div><Button size="lg"><ShoppingCart /> Adaugă în coș</Button><Button variant="outline" size="lg" className="col-span-2"><Heart /> Adaugă la favorite</Button></div>
-          <Button size="lg" className="mt-3 w-full bg-brand-dark hover:bg-brand-dark/90">Cumpără acum</Button>
+          <div className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] gap-3"><div className="flex items-center rounded-md border border-border bg-background"><Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((value) => Math.max(1, value - 1))} aria-label="Scade cantitatea"><Minus /></Button><span className="w-8 text-center text-sm font-bold">{quantity}</span><Button type="button" variant="ghost" size="icon" onClick={() => setQuantity((value) => value + 1)} aria-label="Crește cantitatea"><Plus /></Button></div><Button type="button" size="lg" onClick={() => store.addToCart(product, quantity)}><ShoppingCart /> Adaugă în coș</Button><Button type="button" variant="outline" size="lg" className="col-span-2" onClick={() => store.toggleWishlist(product)}><Heart fill={favorite ? "currentColor" : "none"} /> {favorite ? "Elimină din favorite" : "Adaugă la favorite"}</Button></div>
+          <Button type="button" size="lg" className="mt-3 w-full bg-brand-dark hover:bg-brand-dark/90" onClick={() => { store.addToCart(product, quantity); store.setCartOpen(true); }}>Cumpără acum</Button>
           <div className="mt-6 grid gap-3 text-sm"><div className="flex gap-3 rounded-md bg-muted p-3"><Truck className="size-5 shrink-0 text-primary" /><div><p className="font-bold">Livrare</p><p className="text-xs text-muted-foreground">Costul și termenul apar înainte de confirmare.</p></div></div><div className="flex gap-3 rounded-md bg-muted p-3"><ShieldCheck className="size-5 shrink-0 text-primary" /><div><p className="font-bold">Plată securizată</p><p className="text-xs text-muted-foreground">Metodele disponibile sunt afișate la finalizare.</p></div></div></div>
         </div>
       </section>
