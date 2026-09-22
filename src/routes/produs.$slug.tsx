@@ -29,7 +29,7 @@ function ProductPage() {
   const gallery = [product.image, assets.collectionImage, assets.heroImage];
   return <>
     <div className="mx-auto max-w-[1440px] px-4 pb-4 pt-5 lg:px-6">
-      <nav className="scrollbar-none flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-muted-foreground" aria-label="Breadcrumb"><Link to="/">Acasă</Link><ChevronRight className="size-3" /><Link to="/magazin">Magazin</Link><ChevronRight className="size-3" /><span className="truncate text-foreground">{product.name}</span></nav>
+      <nav className="scrollbar-none flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-muted-foreground" aria-label="Breadcrumb"><Link to="/">Acasă</Link><ChevronRight className="size-3" /><Link to="/magazin" search={{ categorie: undefined, q: undefined }}>Magazin</Link><ChevronRight className="size-3" /><span className="truncate text-foreground">{product.name}</span></nav>
       <section className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,.95fr)]">
         <div className="grid gap-3 sm:grid-cols-[76px_minmax(0,1fr)]">
           <div className="order-2 flex gap-2 overflow-x-auto sm:order-1 sm:flex-col">{gallery.map((image, index) => <button type="button" key={`${image}-${index}`} onClick={() => setActiveImage(index)} className={`size-16 shrink-0 overflow-hidden rounded-md border bg-card ${activeImage === index ? "border-primary ring-2 ring-primary/15" : "border-border"}`} aria-label={`Imaginea ${index + 1}`}><img src={image} alt="" className="size-full object-cover" /></button>)}</div>
