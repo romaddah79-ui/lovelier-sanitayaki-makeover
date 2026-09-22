@@ -13,8 +13,8 @@ const PAGE_SIZE = 6;
 
 export const Route = createFileRoute("/magazin")({
   validateSearch: (search: Record<string, unknown>) => ({
-    categorie: typeof search.categorie === "string" ? search.categorie : undefined,
-    q: typeof search.q === "string" ? search.q : undefined,
+    categorie: typeof search["categorie"] === "string" ? search["categorie"] : undefined,
+    q: typeof search["q"] === "string" ? search["q"] : undefined,
   }),
   head: () => ({ meta: [
     { title: "Magazin Sanitayaki — Catalog produse" },

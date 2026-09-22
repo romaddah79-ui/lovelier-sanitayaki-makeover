@@ -22,7 +22,7 @@ export const Route = createFileRoute("/produs/$slug")({
 function ProductPage() {
   const { slug } = Route.useParams();
   const store = useStore();
-  const product = products.find((item) => item.slug === slug) ?? products[0];
+  const product = (products.find((item) => item.slug === slug) ?? products[0]) as (typeof products)[number];
   const favorite = store.isWishlisted(product.slug);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
