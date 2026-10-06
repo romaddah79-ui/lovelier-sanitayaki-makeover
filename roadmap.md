@@ -5,3 +5,5 @@
 - [x] Build catalog with filters, sorting, and pagination
 - [x] Build product detail experience
 - [x] Validate desktop and mobile previews
+- [ ] Apply the selected modern editorial premium redesign across the storefront
+- [ ] Revalidate shopping interactions and responsive layouts
