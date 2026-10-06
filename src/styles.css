@@ -36,27 +36,29 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.97 0.003 250);
-  --foreground: oklch(0.20 0 0);
+  --background: oklch(0.99 0.003 55);
+  --foreground: oklch(0.18 0.008 30);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0 0);
+  --card-foreground: oklch(0.18 0.008 30);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0 0);
-  --primary: oklch(0.53 0.21 22.5);
+  --popover-foreground: oklch(0.18 0.008 30);
+  --primary: oklch(0.50 0.205 22.5);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.007 250);
-  --secondary-foreground: oklch(0.27 0 0);
-  --muted: oklch(0.94 0.005 250);
-  --muted-foreground: oklch(0.50 0.01 250);
-  --accent: oklch(0.93 0.025 20);
-  --accent-foreground: oklch(0.40 0.16 20);
+  --secondary: oklch(0.965 0.005 55);
+  --secondary-foreground: oklch(0.24 0.01 30);
+  --muted: oklch(0.955 0.004 55);
+  --muted-foreground: oklch(0.48 0.012 30);
+  --accent: oklch(0.95 0.025 20);
+  --accent-foreground: oklch(0.39 0.16 20);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.88 0.008 250);
-  --input: oklch(0.88 0.008 250);
-  --ring: oklch(0.53 0.21 22.5);
-  --brand-dark: oklch(0.37 0.14 18);
+  --border: oklch(0.91 0.006 45);
+  --input: oklch(0.89 0.008 45);
+  --ring: oklch(0.50 0.205 22.5);
+  --brand-dark: oklch(0.35 0.145 18);
   --sale: oklch(0.72 0.17 72);
+  --shadow-soft: 0 18px 50px -30px color-mix(in oklab, var(--foreground) 24%, transparent);
+  --shadow-float: 0 24px 70px -34px color-mix(in oklab, var(--foreground) 34%, transparent);
 }
 
 @layer base {
@@ -65,9 +67,18 @@
   body { margin: 0; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
   button, a, input, select { letter-spacing: 0; }
   button, a { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 3px; }
 }
 
-@utility market-section { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: 1rem; margin-top: 2.5rem; @media (min-width: 64rem) { padding-inline: 1.5rem; } }
-@utility frost-panel { background: color-mix(in oklab, var(--card) 78%, transparent); backdrop-filter: blur(16px); }
+@utility market-section { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 1rem; margin-top: 4rem; @media (min-width: 48rem) { padding-inline: 1.5rem; margin-top: 5rem; } }
+@utility frost-panel { background: color-mix(in oklab, var(--card) 88%, transparent); backdrop-filter: blur(18px); }
 @utility scrollbar-none { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
 @utility mobile-nav-item { display: flex; min-height: 3.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; font-size: 0.625rem; font-weight: 700; color: var(--color-muted-foreground); & svg { width: 1.15rem; height: 1.15rem; } &[data-status="active"] { color: var(--color-primary); } }
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-float { box-shadow: var(--shadow-float); }
+@utility editorial-kicker { font-size: 0.6875rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes editorial-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .editorial-rise { animation: editorial-rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
