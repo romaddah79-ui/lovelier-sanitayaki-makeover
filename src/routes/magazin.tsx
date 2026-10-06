@@ -98,17 +98,17 @@ function ShopPage() {
   const resetFilters = () => { setQuery(""); setCategory(""); setPrice([0, MAX_PRICE]); setInStockOnly(false); setSort("relevanta"); };
   const filterProps: FilterProps = { selected: category, onSelect: setCategory, price, onPrice: setPrice, inStockOnly, onInStock: setInStockOnly };
 
-  return <div className="mx-auto max-w-[1440px] px-4 pb-24 pt-5 lg:px-6 lg:pb-12">
+  return <div className="mx-auto max-w-[1280px] px-4 pb-24 pt-6 lg:px-6 lg:pb-16 lg:pt-8">
     <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Breadcrumb"><Link to="/">Acasă</Link><ChevronRight className="size-3" /><span className="text-foreground">Magazin</span></nav>
-    <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"><div className="min-w-0"><h1 className="font-display text-3xl font-extrabold sm:text-4xl">Magazin</h1><p className="mt-2 text-sm text-muted-foreground">Explorează gama Sanitayaki pe categorii.</p></div><span className="text-xs font-semibold text-muted-foreground">{visible.length} produse</span></div>
-    <div className="mt-6 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-card/75 p-3 backdrop-blur-xl">
+    <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"><div className="min-w-0"><span className="editorial-kicker">CATALOG SANITAYAKI</span><h1 className="mt-2 font-display text-3xl font-extrabold sm:text-5xl">Magazin</h1><p className="mt-3 text-sm text-muted-foreground">Explorează gama Sanitayaki pe categorii.</p></div><span className="text-xs font-semibold text-muted-foreground">{visible.length} produse</span></div>
+    <div className="mt-8 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-soft">
       <div className="flex min-w-[220px] flex-1 items-center rounded-md border border-border bg-background"><Search className="ml-3 size-4 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm outline-hidden" placeholder="Caută în catalog" />{query ? <Button type="button" variant="ghost" size="icon" className="mr-1 size-8" onClick={() => setQuery("")} aria-label="Șterge căutarea"><X /></Button> : null}</div>
       <MobileFilterSheet><Filters {...filterProps} /></MobileFilterSheet>
       <label className="flex items-center gap-2 text-xs font-semibold"><span className="hidden sm:inline">Sortează:</span><select value={sort} onChange={(event) => setSort(event.target.value)} className="rounded-md border border-border bg-background px-3 py-2 text-sm"><option value="relevanta">Relevanță</option><option value="noi">Cele mai noi</option><option value="pret">Preț</option></select></label>
       {category || inStockOnly || query || price[0] > 0 || price[1] < MAX_PRICE ? <Button type="button" variant="ghost" size="sm" onClick={resetFilters}>Resetează</Button> : null}
     </div>
     <div className="mt-6 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
-      <aside className="hidden self-start rounded-lg border border-border bg-card/75 p-5 backdrop-blur-xl lg:block"><Filters {...filterProps} /></aside>
+       <aside className="hidden self-start rounded-lg border border-border bg-card p-5 shadow-soft lg:block"><Filters {...filterProps} /></aside>
       <div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">{pageItems.map((product) => <ProductCard key={product.slug} product={product} compact />)}</div>
         {visible.length === 0 ? (
