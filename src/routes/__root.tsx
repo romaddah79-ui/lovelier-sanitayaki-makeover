@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext, useRouter } from "@tanstack/react-router";
+import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext, useRouter, type ErrorComponentProps } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
@@ -12,7 +12,7 @@ function NotFoundComponent() {
   return <div className="grid min-h-[70vh] place-items-center px-4"><div className="text-center"><p className="font-display text-7xl font-extrabold text-primary">404</p><h1 className="mt-3 text-xl font-bold">Pagina nu a fost găsită</h1><p className="mt-2 text-sm text-muted-foreground">Adresa căutată nu mai este disponibilă.</p><Button asChild className="mt-6"><Link to="/">Înapoi acasă</Link></Button></div></div>;
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);

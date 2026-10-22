@@ -1,6 +1,6 @@
 # Sanitayaki redesign roadmap
-- [ ] Add Shape Your Own Vision as a separate website page and navigation link
-- [ ] Transfer its images and verify the imported page
+- [x] Add Shape Your Own Vision as a separate website page and navigation link
+- [x] Transfer its images and verify the imported page
 - [x] Create original storefront imagery
 - [x] Build shared marketplace components and data model
 - [x] Build responsive homepage
