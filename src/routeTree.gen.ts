@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HerbixRouteImport } from './routes/herbix'
 import { Route as MagazinRouteImport } from './routes/magazin'
 import { Route as ProdusSlugRouteImport } from './routes/produs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HerbixRoute = HerbixRouteImport.update({
+  id: '/herbix',
+  path: '/herbix',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MagazinRoute = MagazinRouteImport.update({
@@ -31,30 +37,34 @@ const ProdusSlugRoute = ProdusSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/herbix': typeof HerbixRoute
   '/magazin': typeof MagazinRoute
   '/produs/$slug': typeof ProdusSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/herbix': typeof HerbixRoute
   '/magazin': typeof MagazinRoute
   '/produs/$slug': typeof ProdusSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/herbix': typeof HerbixRoute
   '/magazin': typeof MagazinRoute
   '/produs/$slug': typeof ProdusSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/magazin' | '/produs/$slug'
+  fullPaths: '/' | '/herbix' | '/magazin' | '/produs/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/magazin' | '/produs/$slug'
-  id: '__root__' | '/' | '/magazin' | '/produs/$slug'
+  to: '/' | '/herbix' | '/magazin' | '/produs/$slug'
+  id: '__root__' | '/' | '/herbix' | '/magazin' | '/produs/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HerbixRoute: typeof HerbixRoute
   MagazinRoute: typeof MagazinRoute
   ProdusSlugRoute: typeof ProdusSlugRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/herbix': {
+      id: '/herbix'
+      path: '/herbix'
+      fullPath: '/herbix'
+      preLoaderRoute: typeof HerbixRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/magazin': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HerbixRoute: HerbixRoute,
   MagazinRoute: MagazinRoute,
   ProdusSlugRoute: ProdusSlugRoute,
 }

@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep shared marketplace presentation in `src/components/marketplace.tsx` so homepage, catalog, and product pages remain visually consistent.
+- Keep the imported HERBIX collection on `/herbix` with scoped presentation and separate display data; it must not replace the marketplace or create disconnected checkout/subscription flows.

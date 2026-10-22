@@ -72,6 +72,7 @@ export function MarketplaceHeader() {
           </div>
           <nav className="scrollbar-none flex items-center gap-2 overflow-x-auto border-t border-border/60 py-2.5" aria-label="Categorii produse">
             <Link to="/magazin" search={{ categorie: undefined, q: undefined }} className="flex shrink-0 items-center gap-2 rounded-md bg-primary px-3 py-2 text-xs font-bold text-primary-foreground sm:text-sm"><Menu className="size-4" /> Toate categoriile</Link>
+            <Link to="/herbix" className="shrink-0 rounded-md px-3 py-2 text-xs font-bold text-primary transition-colors hover:bg-accent sm:text-sm" activeProps={{ className: "bg-accent" }}>HERBIX · Arome naturale</Link>
             {categories.map((category) => <Link key={category.name} to="/magazin" search={{ categorie: category.name, q: undefined }} className="shrink-0 rounded-md px-3 py-2 text-xs font-semibold text-foreground/70 transition-colors hover:bg-muted hover:text-primary sm:text-sm">{category.name}</Link>)}
           </nav>
         </div>
