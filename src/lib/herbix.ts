@@ -1,11 +1,11 @@
-import img1 from "@/assets/herbix-1.webp.asset.json";
-import imgHepatic from "@/assets/herbix-2.webp.asset.json";
-import imgResp from "@/assets/herbix-3.webp.asset.json";
-import imgEnergie from "@/assets/herbix-4.webp.asset.json";
-import imgColectie from "@/assets/herbix-5.webp.asset.json";
-import imgSomn from "@/assets/herbix-6.webp.asset.json";
-import imgLifestyle from "@/assets/herbix-7.webp.asset.json";
-import imgCap from "@/assets/herbix-8.png.asset.json";
+import img1 from "@/assets/herbix/herbix-1.webp.asset.json";
+import imgHepatic from "@/assets/herbix/herbix-2.webp.asset.json";
+import imgResp from "@/assets/herbix/herbix-3.webp.asset.json";
+import imgEnergie from "@/assets/herbix/herbix-4.webp.asset.json";
+import imgColectie from "@/assets/herbix/herbix-5.webp.asset.json";
+import imgSomn from "@/assets/herbix/herbix-6.webp.asset.json";
+import imgLifestyle from "@/assets/herbix/herbix-7.webp.asset.json";
+import imgCap from "@/assets/herbix/herbix-8.png.asset.json";
 
 export const images = {
   hero: img1.url,

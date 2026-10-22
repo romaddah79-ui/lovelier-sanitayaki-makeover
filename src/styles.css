@@ -32,6 +32,10 @@
   --color-ring: var(--ring);
   --color-brand-dark: var(--brand-dark);
   --color-sale: var(--sale);
+  --color-herbix-green: var(--herbix-green);
+  --color-herbix-blue: var(--herbix-blue);
+  --color-herbix-orange: var(--herbix-orange);
+  --color-herbix-gray: var(--herbix-gray);
 }
 
 :root {
@@ -57,6 +61,10 @@
   --ring: oklch(0.50 0.205 22.5);
   --brand-dark: oklch(0.35 0.145 18);
   --sale: oklch(0.72 0.17 72);
+  --herbix-green: oklch(0.48 0.12 149);
+  --herbix-blue: oklch(0.42 0.17 266);
+  --herbix-orange: oklch(0.55 0.19 33);
+  --herbix-gray: oklch(0.5 0 0);
   --shadow-soft: 0 18px 50px -30px color-mix(in oklab, var(--foreground) 24%, transparent);
   --shadow-float: 0 24px 70px -34px color-mix(in oklab, var(--foreground) 34%, transparent);
 }
@@ -77,6 +85,12 @@
 @utility shadow-soft { box-shadow: var(--shadow-soft); }
 @utility shadow-float { box-shadow: var(--shadow-float); }
 @utility editorial-kicker { font-size: 0.6875rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); }
+
+.herbix-page { --primary: var(--herbix-green); --ring: var(--herbix-green); --accent: oklch(0.96 0.015 149); --accent-foreground: var(--herbix-green); }
+.herbix-page h1, .herbix-page h2, .herbix-page h3 { font-family: Georgia, serif; }
+.herbix-hero { background: var(--card); }
+.herbix-hero-copy { background: color-mix(in oklab, var(--card) 94%, transparent); backdrop-filter: blur(8px); }
+.herbix-scroll-target { scroll-margin-top: 12rem; }
 
 @media (prefers-reduced-motion: no-preference) {
   @keyframes editorial-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
